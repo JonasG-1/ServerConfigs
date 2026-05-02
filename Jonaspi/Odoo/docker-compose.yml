@@ -1,5 +1,6 @@
 services:
   db:
+    restart: unless-stopped
     image: postgres:16
     environment:
       POSTGRES_DB: postgres
@@ -9,6 +10,7 @@ services:
       - odoo-db-data:/var/lib/postgresql/data
 
   odoo:
+    restart: unless-stopped
     image: odoo:18
     depends_on:
       - db
